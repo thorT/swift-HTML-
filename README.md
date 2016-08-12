@@ -2,13 +2,16 @@
 <br />
 <br />
 
+
 ---
 ##### 概述：使用swift，通过拉取网易接口数据，在swift工程中创建js、css文件及html格式，使用webView 加载接口内容并用页面展示的示例；仅供参考；
 ---
 
+###### 示例
+![](https://github.com/thorT/swift-HTML-/blob/master/screenshot/IMG_0261.PNG?raw=true)
+
 ### 过程：
-###### 1. NSURLSession 加载数据
->  
+###### 1. NSURLSession 加载数据  
         <pre>if  let url = NSURL(string: "http://c.m.163.com/nc/article/BJ5NRE5T00031H2L/full.html") {
             // 设置urlRequest
             let request = NSURLRequest(URL: url)
@@ -27,7 +30,6 @@
         }</ pre>
 
 ###### 2. 处理数据
-> 
   <pre> func deal(jsonData:NSDictionary) -> Void {
         guard let allData = jsonData["BJ5NRE5T00031H2L"] else{
             return
@@ -88,8 +90,7 @@
         webView.loadHTMLString(html, baseURL: nil)
     }</pre>
 
-###### 3. 简单的css 样式
-> 
+###### 3. 简单的css 样式 
 <pre>
 body{
 /*    background-color: red;*/
@@ -118,13 +119,13 @@ img{
 }</pre>
 
 ###### 4. 简单的js
-><pre>
+<pre>
 window.onload = function(){
     // 拿到所有的图片
     var allImg = document.getElementsByTagName("img");
    // alert(allImg.length);
     // 遍历
-    for(var i = 0; i<allImg.length; i++){
+    for(var i = 0; i < allImg.length; i++){
         // 取出单个图片对象
         var img = allImg[i];
         img.id = i;
@@ -142,7 +143,7 @@ window.onload = function(){
 }</pre>
 
 ###### 5. swift 接收图片点击事件，并弹出相册
-><pre>
+<pre>
 //UIVebViewDelegate
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         // 1. 取出请求字符串
@@ -172,4 +173,17 @@ window.onload = function(){
         photoVC.sourceType = UIImagePickerControllerSourceType.PhotoLibrary;
         // 模态出来
         self.presentViewController(photoVC, animated: true, completion: nil);
-    }
+    }</pre>
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
